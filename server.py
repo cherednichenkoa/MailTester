@@ -36,7 +36,6 @@ def get_result(email, conn):
         if result['code'] not in [0, 6]:
             break
 
-        print 'Attempting to connect to ' + str(mail_server.exchange)[:-1]
         try:
             server = smtplib.SMTP(str(mail_server.exchange)[:-1])
         except Exception as ex:
@@ -64,7 +63,6 @@ def get_result(email, conn):
     result['email'] = email
     resp = json.dumps(result)
 
-    print 'Done', resp
 
     conn.send(resp)
     conn.close()
